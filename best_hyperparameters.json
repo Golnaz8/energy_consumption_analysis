@@ -1,0 +1,1 @@
+{"activation": "relu", "first_units": 144, "num_layers": 5, "units_0": 240, "units_1": 48, "units_2": 240, "units_3": 176, "units_4": 208, "tuner/epochs": 7, "tuner/initial_epoch": 3, "tuner/bracket": 2, "tuner/round": 1, "tuner/trial_id": "0003"}
