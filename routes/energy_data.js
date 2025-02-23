@@ -1,4 +1,3 @@
-
 const express = require('express');
 const router = express.Router();
 const sequelize = require('../config/connection');
@@ -21,11 +20,15 @@ router.get('/', async (req, res) => {
         FROM energy_data 
         WHERE FSA = ? AND DATE = ?
         GROUP BY FSA, DATE, CUSTOMER_TYPE
-    `;    
+    `;
 
-        const [rows] = await sequelize.query(query, { replacements: [postalcode, date] });
+    
+        const rows = await sequelize.query(query, { 
+            replacements: [postalcode, date], 
+            type: sequelize.QueryTypes.SELECT 
+        });
 
-        if (rows.length === 0) {
+        if (!Array.isArray(rows) || rows.length === 0) {
             return res.status(404).json({ error: 'No data found for this postal code and date' });
         }
 
@@ -36,5 +39,35 @@ router.get('/', async (req, res) => {
     }
 });
 
-module.exports = router;
 
+// Fetch unique postal codes from the database
+router.get('/postal-codes', async (req, res) => {
+    console.log("Accessing /postal-codes route...");
+
+    try {
+        const query = `SELECT DISTINCT FSA FROM energy_data ORDER BY FSA`;
+
+        console.log("Executing query:", query);
+
+        // Force MySQL to return an array
+        const result = await sequelize.query(query, { type: sequelize.QueryTypes.SELECT });
+
+        // Ensure result is always an array
+        const rows = Array.isArray(result) ? result : [result];
+
+        console.log("Query result:", rows);
+
+        if (rows.length === 0) {
+            console.log("No postal codes found in the database.");
+            return res.status(404).json({ error: 'No postal codes found' });
+        }
+
+        res.json({ postalCodes: rows.map(row => row.FSA) });
+
+    } catch (err) {
+        console.error("Error accessing postal codes:", err);
+        res.status(500).json({ error: 'Failed to fetch postal codes', details: err.message });
+    }
+});
+
+module.exports = router;
