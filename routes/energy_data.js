@@ -16,7 +16,8 @@ router.get('/', async (req, res) => {
             FSA AS postalcode, 
             DATE, 
             CUSTOMER_TYPE, 
-            SUM(TOTAL_CONSUMPTION) AS TOTAL_CONSUMPTION
+            SUM(TOTAL_CONSUMPTION) AS TOTAL_CONSUMPTION,
+            SUM(PREDICTED_CONSUMPTION) AS PREDICTED_CONSUMPTION
         FROM energy_data 
         WHERE FSA = ? AND DATE = ?
         GROUP BY FSA, DATE, CUSTOMER_TYPE
