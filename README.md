@@ -193,7 +193,6 @@ https://github.com/Golnaz8/energy_consumption_analysis
 
 This project was independently developed by the following developers:
 <br><br />
-
 **Neda Jamal**:
 
 - **Github**: [@Neda2020](https://github.com/Neda2020)
