@@ -25,6 +25,8 @@
 - [Data Overview](#data-overview)
 - [Usage Guide](#usage-guide)
 - [Technologies Used](#technologies-used)
+- [Screenshots](#screenshots)
+- [Consideration](#consideration)
 - [Credits](#credits)
 - [License](#license)
 
@@ -184,6 +186,15 @@ This project leverages several technologies to process and analyze election data
 - **GitHub**: Hosts the repository online, allowing for backup, sharing, and documentation hosting, including this README file.
 
 
+## Screenshots
+<img width="245" alt="Image" src="https://github.com/user-attachments/assets/6c822d05-6a02-4599-a4eb-5bb937f41e13" />
+
+<img width="587" alt="Image" src="https://github.com/user-attachments/assets/dd2834a6-25e5-4ab3-9acb-fa72b6d9e18e" />
+
+## Consideration
+
+Due to time constraints, we precomputed all predictions for our dataset and imported the predicted values into our database. Therefore, the results displayed in the UI are not generated from live model predictions but are retrieved directly from the database
+
 
 
 ## Github URL
@@ -193,6 +204,7 @@ https://github.com/Golnaz8/energy_consumption_analysis
 
 This project was independently developed by the following developers:
 <br><br />
+
 **Neda Jamal**:
 
 - **Github**: [@Neda2020](https://github.com/Neda2020)
